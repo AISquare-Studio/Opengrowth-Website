@@ -1,0 +1,1160 @@
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Poppins", sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* Header Styles */
+.header {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.main-content {
+  padding-top: 100px;
+}
+
+.main-nav {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  width: 1024px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav .main-nav__list {
+  display: flex;
+  list-style: none;
+  gap: 3em;
+  margin-right: 5em;
+}
+
+.main-nav .main-nav__list .main-nav__link {
+  text-decoration: none;
+  color: rgb(102, 102, 102);
+  transition: color 0.4s ease 0s;
+  font-size: 0.9em;
+}
+
+.main-nav .main-nav__list .main-nav__link:hover {
+  color: rgb(135, 202, 168);
+}
+
+.main-nav .main-nav__list .main-nav__link.active {
+  color: rgb(0, 150, 73);
+}
+
+/* Hero Section Styles */
+.hero {
+  position: relative;
+  height: 90vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/1 (8).jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  will-change: transform;
+  transform: translateY(0);
+}
+
+.hero__container {
+  position: relative;
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.hero__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 600px;
+  position: relative;
+  top: -5em;
+  z-index: 1;
+  will-change: transform;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.hero__title {
+  padding: 0.7em 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.hero__title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 3px;
+  width: 250px;
+  background-color: rgb(0, 150, 73);
+}
+
+.hero__title-line {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 3em;
+  text-align: right;
+  text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.hero__text {
+  color: white;
+  text-align: center;
+  background-color: rgba(22, 39, 85, 0.8);
+  padding: 2em;
+  max-width: 550px;
+}
+
+/* Cards Section Styles */
+.cards {
+  background-color: rgb(22, 39, 85);
+  padding: 4em 2em;
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+  position: relative;
+  z-index: 2;
+  margin-top: -100px;
+}
+
+.card {
+  background-color: white;
+  padding: 2em;
+  width: 310px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: -150px;
+}
+
+.card__title {
+  color: rgb(45, 77, 170);
+  padding: 0 2em;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.card__text {
+  color: #666;
+  margin-bottom: 1.25em;
+  font-weight: 400;
+  line-height: 1.3;
+  padding: 0 2em;
+}
+
+.card__link {
+  color: rgb(0, 150, 73);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  font-size: 0.85em;
+  padding: 0 2em;
+}
+
+.card__link:hover {
+  color: rgb(0, 130, 63);
+}
+
+/* Roots Section Styles */
+.roots {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+  margin: 10vh 0;
+  padding: 10vh 0;
+}
+
+.roots__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/1 (1).jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.roots__container {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  background-color: rgba(22, 39, 85, 0.8);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roots__content {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.roots__title {
+  margin-bottom: 0.5em;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 2.3em;
+  letter-spacing: 0.3em;
+  text-align: center;
+}
+
+.roots__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 1.5em;
+}
+
+/* Vision Section Styles */
+.vision {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  margin: 10vh 0;
+  padding: 10vh 0;
+}
+
+.vision__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/1 (5).jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.vision__container {
+  position: absolute;
+  right: 0;
+  left: 60%;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(22, 39, 85, 0.5);
+  color: #fff;
+  z-index: 10;
+}
+
+.vision__content {
+  margin: auto;
+  padding: 3em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.vision__title {
+  line-height: 1;
+  margin-bottom: 0.5em;
+  font-family: "Montserrat";
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 4em;
+  letter-spacing: 0.3em;
+}
+
+/* Focus Section Styles */
+.focus {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  margin: 10vh 0;
+  padding: 10vh 0;
+}
+
+.focus__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/focus.webp");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.focus__container {
+  position: absolute;
+  left: 0;
+  right: 60%;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(22, 39, 85, 0.5);
+  color: #fff;
+  z-index: 2;
+}
+
+.focus__content {
+  margin: auto;
+  padding: 3em;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.focus__title {
+  line-height: 1;
+  margin-bottom: 0.5em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 4em;
+  letter-spacing: 0.3em;
+}
+
+.focus__text {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Do Well Section Styles */
+.do-well {
+  background-color: #162755;
+  color: #fff;
+  padding: 4em 2em;
+  text-align: center;
+}
+
+.do-well__title {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 3em;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+.do-well__text {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Featured Section Styles */
+.featured {
+  padding: 4em 2em;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.featured__header {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 2.5em;
+  color: #666666;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.featured__header::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00A000;
+  margin: 0.5em auto 0;
+}
+
+/* Ignite Ambition Section Styles */
+.ignite-ambition {
+  position: relative;
+  display: flex;
+  height: 80vh;
+  background-color: #F9E8E8;
+  overflow: hidden;
+}
+
+.ignite-ambition__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/ignite_ambition.webp");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+.ignite-ambition__content {
+  display: flex;
+  flex: 1;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+}
+
+.ignite-ambition__image {
+  position: relative;
+  right: 212px;
+  flex: 1 1 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ignite-ambition__info {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 3em;
+  color: #4E2231;
+}
+
+.ignite-ambition__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5em;
+  color: #4E2231;
+  text-transform: uppercase;
+  margin: 0 0 0.5em 0;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.ignite-ambition__text {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0 0 2em 0;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.ignite-ambition__button {
+  background-color: #9E5060;
+  color: #FFFFFF;
+  padding: 0.8em 2em;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-right: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ignite-ambition__button:hover {
+  background-color: #7A3048;
+}
+
+.ignite-ambition__link {
+  color: #9E5060;
+  font-size: 1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-top: 20px;
+}
+
+.ignite-ambition__link:hover {
+  color: #7A3048;
+}
+
+/* Initiatives Section Styles */
+.initiatives {
+  padding: 4em 2em;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.initiatives__header {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 2.5em;
+  color: #666666;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.initiatives__header::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00A000;
+  margin: 0.5em auto 0;
+}
+
+/* Our Initiative Section Styles */
+.our-initiative {
+  display: flex;
+  align-items: stretch; /* Stretch items to fill the height */
+  height: 80vh; /* Fixed height to match Ignite Ambition */
+  padding: 0; /* Remove padding to utilize full height */
+  background-color: #f0f0f0; /* Light background for contrast */
+}
+
+.our-initiative__image {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 0; /* Remove padding to utilize full height */
+}
+
+.our-initiative__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 0; /* Remove rounded corners to match fixed height layout */
+  box-shadow: none; /* Remove shadow if not needed */
+}
+
+.our-initiative__content {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 2em; /* Add padding for spacing */
+  text-align: left; /* Align text to the left */
+  column-count: 2; /* Split text into 2 columns */
+  column-gap: 2em; /* Space between columns */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  background-color: #f0f0f0; /* Match background color */
+}
+
+.our-initiative__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5em;
+  color: #162755; /* Dark blue color */
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+  break-inside: avoid; /* Prevent title from breaking between columns */
+}
+
+.our-initiative__subtext {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+.our-initiative__link {
+  display: inline-block;
+  padding: 0.8em 2em;
+  background-color: #00965e; /* Matching green color */
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.our-initiative__link:hover {
+  background-color: #007a4c; /* Darker green on hover */
+}
+
+/* Our Initiative Section Styles */
+.our-initiative {
+  display: flex;
+  align-items: stretch; /* Stretch items to fill the height */
+  height: 80vh; /* Fixed height to match Ignite Ambition */
+  padding: 0; /* Remove padding to utilize full height */
+  background-color: #f0f0f0; /* Light background for contrast */
+}
+
+.our-initiative__image {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 0; /* Remove padding to utilize full height */
+}
+
+.our-initiative__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 0; /* Remove rounded corners to match fixed height layout */
+  box-shadow: none; /* Remove shadow if not needed */
+}
+
+.our-initiative__content {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 2em; /* Add padding for spacing */
+  text-align: center; /* Center text content */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align items horizontally center */
+  justify-content: center; /* Center items vertically */
+  background-color: #ace5c780; /* Updated to the requested background color */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+
+/* Title Image Styles */
+.our-initiative__title-image {
+  max-width: 25%; /* Adjust width as needed */
+  margin-bottom: 3em;
+}
+
+.our-initiative__subtext {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+/* Updated "Learn More" Link Styles */
+.our-initiative__link {
+  display: inline; /* Change from inline-block to inline */
+  background-color: transparent; /* Remove background color */
+  color: #00965e; /* Set desired text color */
+  padding: 0; /* Remove padding */
+  border: none; /* Remove any borders */
+  text-decoration: none; /* Optional: Add underline for clarity */
+  font-weight: normal; /* Set to normal or desired weight */
+  cursor: pointer; /* Change cursor to pointer for better UX */
+  transition: color 0.3s ease; /* Optional: Smooth color transition */
+}
+
+/* Fuzia Section Styles */
+/* Fuzia Section Styles */
+.fuzia {
+  display: flex;
+  align-items: stretch; /* Stretch items to fill the height */
+  height: 80vh; /* Fixed height to match Our Initiative */
+  padding: 0; /* Remove padding to utilize full height */
+  background-color: #4e1961; /* Updated background color */
+  margin: 10vh 0; /* Consistent spacing with other sections */
+}
+
+.fuzia__image {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 0; /* Remove padding to utilize full height */
+}
+
+.fuzia__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 0; /* Remove rounded corners to match fixed height layout */
+  box-shadow: none; /* Remove shadow if not needed */
+}
+
+/* Updated Fuzia Content Styles */
+.fuzia__content {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 2em; /* Add padding for spacing */
+  text-align: center; /* Center text horizontally */
+  /* Removed column-count for simpler layout */
+  /* column-count: 2; */
+  /* column-gap: 2em; */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  background-color: rgba(78, 25, 97, 0.8); /* Slightly transparent for better readability */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+/* Enlarged and Lightened Title Image */
+.fuzia__title-image {
+  max-width: 35%; /* Increased width from 25% to 35% */
+  margin-bottom: 2em; /* Reduced margin for better spacing */
+  opacity: 0.8; /* Lightened the image */
+  /* Alternatively, use a filter to lighten */
+  /* filter: brightness(1.2); */
+}
+
+/* Fuzia Subtext Styles */
+.fuzia__subtext {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  color: #ffffff; /* Changed to white for better contrast against darker background */
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+/* Fuzia Link Styles */
+.fuzia__link {
+  display: inline; /* Change from inline-block to inline */
+  background-color: transparent; /* Remove background color */
+  color: #ff00bb; /* Set desired text color */
+  padding: 0; /* Remove padding */
+  border: none; /* Remove any borders */
+  text-decoration: none; /* Optional: Add underline for clarity */
+  font-weight: normal; /* Set to normal or desired weight */
+  cursor: pointer; /* Change cursor to pointer for better UX */
+  transition: color 0.3s ease; /* Optional: Smooth color transition */
+}
+
+.fuzia__link:hover {
+  background-color: #007a4c; /* Darker green on hover */
+  color: #e0f7fa; /* Light text color on hover */
+}
+
+/* Responsive Design for Fuzia Section */
+@media (max-width: 768px) {
+  .fuzia {
+    flex-direction: column; /* Stack content vertically */
+    height: auto; /* Let height adjust based on content */
+  }
+
+  .fuzia__image,
+  .fuzia__content {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .fuzia__title-image {
+    max-width: 50%; /* Adjust as needed */
+    margin: 0 auto 2em auto; /* Center the image */
+    opacity: 1; /* Reset opacity for better visibility on small screens */
+  }
+
+  .fuzia__content {
+    text-align: center; /* Ensure text is centered */
+    /* column-count: 1; */ /* Already removed */
+    padding: 1em;
+  }
+
+  .fuzia__subtext {
+    font-size: 1em; /* Slightly smaller font size on mobile */
+  }
+
+  .fuzia__link {
+    display: inline; /* Change from inline-block to inline */
+  background-color: transparent; /* Remove background color */
+  color: #00965e; /* Set desired text color */
+  padding: 0; /* Remove padding */
+  border: none; /* Remove any borders */
+  text-decoration: none; /* Optional: Add underline for clarity */
+  font-weight: normal; /* Set to normal or desired weight */
+  cursor: pointer; /* Change cursor to pointer for better UX */
+  transition: color 0.3s ease; /* Optional: Smooth color transition */
+  }
+}
+
+/* Vineyard Section Styles */
+.vineyard {
+  display: flex;
+  align-items: stretch; /* Stretch items to fill the height */
+  height: 80vh; /* Fixed height to match Our Initiative */
+  padding: 0; /* Remove padding to utilize full height */
+  background-color: #f0f0f0; /* Light background for contrast */
+  margin: 10vh 0; /* Consistent spacing with other sections */
+}
+
+.vineyard__image {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 0; /* Remove padding to utilize full height */
+}
+
+.vineyard__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 0; /* Remove rounded corners to match fixed height layout */
+  box-shadow: none; /* Remove shadow if not needed */
+}
+
+.vineyard__content {
+  flex: 1 1 50%;
+  max-width: 50%;
+  padding: 2em; /* Add padding for spacing */
+  text-align: center; /* Align text to the left */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  background-color: #333333; /* Match background color */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+}
+
+.vineyard__title-image {
+  max-width: 35%; /* Increased width for prominence */
+  margin-bottom: 2em; /* Reduced margin for better spacing */
+  opacity: 0.8; /* Lightened the image */
+  /* Alternatively, use a filter to lighten */
+  /* filter: brightness(1.2); */
+}
+
+.vineyard__subtext {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  color: #ffffff; /* Changed to white for better contrast against darker background */
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+.vineyard__link {
+  display: inline; /* Change from inline-block to inline */
+  background-color: transparent; /* Remove background color */
+  color: rgb(170, 170, 80); /* Set desired text color */
+  padding: 0; /* Remove padding */
+  border: none; /* Remove any borders */
+  text-decoration: none; /* Optional: Add underline for clarity */
+  font-weight: normal; /* Set to normal or desired weight */
+  cursor: pointer; /* Change cursor to pointer for better UX */
+  transition: color 0.3s ease; /* Optional: Smooth color transition */
+}
+
+.vineyard__link:hover {
+  background-color: #007a4c; /* Darker green on hover */
+  color: #e0f7fa; /* Light text color on hover */
+}
+
+/* Responsive Design for Vineyard Section */
+@media (max-width: 768px) {
+  .vineyard {
+    flex-direction: column; /* Stack content vertically */
+    height: auto; /* Let height adjust based on content */
+  }
+
+  .vineyard__image,
+  .vineyard__content {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .vineyard__title-image {
+    max-width: 50%; /* Adjust as needed */
+    margin: 0 auto 2em auto; /* Center the image */
+    opacity: 1; /* Reset opacity for better visibility on small screens */
+  }
+
+  .vineyard__content {
+    text-align: center; /* Ensure text is centered */
+    padding: 1em;
+  }
+
+  .vineyard__subtext {
+    font-size: 1em; /* Slightly smaller font size on mobile */
+  }
+
+  .vineyard__link {
+    padding: 0.6em 1.5em; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Service Section Styles */
+/* Service Section Styles */
+.service {
+  display: flex;
+  align-items: stretch; /* Changed from center to stretch */
+  justify-content: center;
+  height: 80vh; /* Fixed height to match other sections */
+  padding: 0;
+  background-color: #f0f0f0; /* Light background for contrast */
+  margin: 10vh 0; /* Consistent spacing with other sections */
+}
+
+.service__image {
+  flex: 1 1 50%; /* Allows the image to take up 50% of the container */
+  max-width: 50%;
+  padding: 0; /* Remove padding to utilize full height */
+}
+
+.service__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container without distortion */
+  border-radius: 0; /* Remove rounded corners to match fixed height layout */
+  box-shadow: none; /* Remove shadow if not needed */
+}
+
+.service__content {
+  flex: 1 1 50%; /* Adjusted to take up the remaining 50% */
+  max-width: 50%;
+  padding: 2em; /* Add padding for spacing */
+  text-align: center; /* Align text to the left */
+  background-color: #162755; /* Blue background as specified */
+  color: #ffffff; /* White text for contrast */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Align items to the start horizontally */
+  
+  margin-left: 0; /* Removed margin to ensure equal heights */
+}
+
+.service__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+
+.service__text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+.service__link {
+  display: inline-block; /* Allows padding and better click area */
+  padding: 0.8em 2em;
+  background-color: #4426ef; /* Matching green color */
+  color: #ffffff; /* White text */
+  text-decoration: none; /* Remove underline */
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions */
+}
+
+.service__link:hover {
+  background-color: #007a4c; /* Darker green on hover */
+  color: #e0f7fa; /* Light text color on hover */
+}
+
+/* Responsive Design for Service Section */
+@media (max-width: 768px) {
+  .service {
+    flex-direction: column; /* Stack content vertically */
+    height: auto; /* Let height adjust based on content */
+    padding: 2em 0;
+  }
+
+  .service__image,
+  .service__content {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .service__content {
+    margin-left: 0; /* Remove left margin */
+    background-color: #162755; /* Maintain blue background */
+    padding: 1em;
+    text-align: center; /* Center text on small screens */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .service__title {
+    font-size: 2em; /* Slightly smaller font size on mobile */
+    margin-bottom: 0.5em;
+  }
+
+  .service__text {
+    font-size: 1em; /* Slightly smaller font size on mobile */
+    margin-bottom: 1em;
+  }
+
+  .service__link {
+    padding: 0.6em 1.5em; /* Adjust padding for smaller screens */
+  }
+}
+
+/* Footer Styles */
+/* Footer Styles */
+.footer {
+  background-color: #102152; /* Dark blue background */
+  padding: 6em 8em;
+  color: #d1d5db; /* Light gray text color */
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__info {
+  text-align: center;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.footer__info p {
+  margin: 0;
+}
+
+.footer__divider {
+  height: 30px;
+  width: 1px;
+  background-color: #d1d5db; /* Divider color */
+}
+
+.footer__social {
+  display: flex;
+  gap: 1em;
+  font-size: 1.5em;
+}
+
+.footer__social a {
+  color: #d1d5db; /* Same color as text */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__social a:hover {
+  color: #4a90e2; /* Light blue on hover */
+}
+
+.footer__contact {
+  margin-left: auto;
+}
+
+.footer__contact-button {
+  background-color: #4a90e2; /* Blue button */
+  color: #ffffff;
+  padding: 0.8em 2em;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.footer__contact-button:hover {
+  background-color: #377bb5; /* Darker blue on hover */
+}
+
+/* Adjustments for height and spacing */
+.footer__container > * {
+  flex-shrink: 0;
+}
+
+.footer__info,
+.footer__social,
+.footer__contact {
+  min-height: 80px; /* Adjust height as needed */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer__divider {
+    display: none; /* Hide dividers on small screens */
+  }
+  .footer__contact {
+    margin: 1em 0;
+  }
+}
