@@ -16,27 +16,42 @@
 <body>
   <header class="header" id="navbar">
     <nav class="main-nav">
-      <a href="#" class="main-nav__link">
+      <!-- Logo -->
+      <a href="index.html" class="main-nav__link">
         <img class="main-nav__logo"
           src="https://static.wixstatic.com/media/929e8c_f7c2265ae1504106bcf0b40c429b66be~mv2_d_34342_6606_s_6.png/v1/fill/w_261,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Asset%2011.png"
           alt="OpenGrowth Logo" />
       </a>
+      
+      <!-- Navigation Links -->
       <ul class="main-nav__list">
         <li class="main-nav__item">
-          <a href="#" class="main-nav__link active">Home</a>
+          <a href="index.html" class="main-nav__link">Home</a>
         </li>
         <li class="main-nav__item">
-          <a href="#ignite-ambition" id="ignite-ambition-link" class="main-nav__link">Ignite Ambition</a>
+          <a href="index.html" id="ignite-ambition-link" class="main-nav__link">Ignite Ambition</a>
         </li>
         <li class="main-nav__item">
-          <a href="team.html" class="main-nav__link">Team</a>
+          <a href="team.html" class="main-nav__link active">Team</a>
         </li>
         <li class="main-nav__item">
-          <a href="contact.html" class="main-nav__link">Contact</a>
+          <a href="contact.html" class="main-nav__link ">Contact</a>
         </li>
       </ul>
+      
+      <!-- Hamburger Menu -->
+      <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
   </header>
+
+
 
   <main class="main-content">
 
@@ -102,7 +117,7 @@
               <i class="fab fa-linkedin"></i>
             </a>
             <p class="team__bio">
-              Riya is a young entrepreneur bringing gir together from developing communities around the world. At only
+              Riya is a young entrepreneur bringing girls together from developing communities around the world. At only
               11
               years old she started Fuzia with the aim to help solve gender inequality by using creativity to empower
               women.

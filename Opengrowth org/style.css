@@ -60,6 +60,8 @@ h6 {
 }
 
 /* Header Styles */
+/* Existing Styles */
+/* Existing Styles */
 .header {
   width: 100%;
   height: 100px;
@@ -108,10 +110,146 @@ h6 {
   color: rgb(0, 150, 73);
 }
 
+/* Hide Hamburger Menu on Desktop and Tablet */
+.hamburger {
+  display: none;
+}
+
+/* Overlay Styles */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 999; /* Just below the menu */
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Show Overlay When Menu is Active */
+.main-nav.active + .overlay {
+  display: block;
+  opacity: 1;
+}
+
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .main-nav {
+    width: 90%;
+    justify-content: space-between;
+  }
+
+  .main-nav .main-nav__list {
+    gap: 2em;
+    margin-right: 2em;
+  }
+
+  .main-nav .main-nav__list .main-nav__link {
+    font-size: 1em;
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .header {
+    height: 60px;
+  }
+
+  .main-content {
+    padding-top: 60px;
+  }
+
+  .main-nav {
+    width: 100%;
+    padding: 0 1em;
+  }
+
+  .main-nav .main-nav__list {
+    position: fixed;
+    top: 60px;
+    left: -100%;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: white;
+    gap: 1.5em;
+    padding-top: 2em;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3); /* Optional shadow */
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+
+  .main-nav .main-nav__list .main-nav__link {
+    font-size: 1.2em;
+    color: rgb(0, 150, 73); /* Ensure links are visible */
+  }
+
+  /* Hamburger Menu Styles */
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 22px;
+    position: relative;
+    z-index: 1001; /* Ensure it stays above the menu */
+  }
+
+  .hamburger span {
+    background-color: #666;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .hamburger span:nth-child(1) {
+    top: 0;
+  }
+
+  .hamburger span:nth-child(2) {
+    top: 9px;
+  }
+
+  .hamburger span:nth-child(3) {
+    top: 18px;
+  }
+
+  /* Toggle Menu */
+  .main-nav.active .main-nav__list {
+    left: 0;
+  }
+
+  /* Change hamburger to 'X' when active */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 9px;
+  }
+
+  /* Show Overlay When Menu is Active */
+  .main-nav.active + .overlay {
+    display: block;
+  }
+}
+
+
 /* Hero Section Styles */
 .hero {
   position: relative;
-  height: 90vh;
+  height: 115vh;
   width: 100%;
   overflow: hidden;
 }
@@ -132,7 +270,7 @@ h6 {
 
 .hero__container {
   position: relative;
-  max-width: 1024px;
+  max-width: 1200px;
   height: 100%;
   margin: 0 auto;
   display: flex;
@@ -170,6 +308,9 @@ h6 {
   line-height: 1.2;
   margin-bottom: 1em;
   position: relative;
+  opacity: 0; /* Start hidden */
+  transform: translateX(50px); /* Initial position from the right */
+  animation: fadeInRight 1s ease forwards; /* Apply animation */
 }
 
 .hero__title::after {
@@ -198,9 +339,156 @@ h6 {
   background-color: rgba(22, 39, 85, 0.8);
   padding: 2em;
   max-width: 550px;
+  opacity: 0; /* Start hidden */
+  transform: translateX(50px); /* Initial position from the right */
+  animation: slideInRight 1s ease forwards;
+  animation-delay: 0.5s; /* Delay to start after heading */
 }
 
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Keyframe for Subtext Animation: Slide In from Right to Left */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Respect User's Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero__title,
+  .hero__text {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh; /* Adjust height for tablets */
+  }
+
+  .hero__container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+  }
+
+  .hero__content,
+  .hero__content-wrapper {
+    align-items: center;
+    text-align: center;
+    top: 0; /* Reset top positioning */
+  }
+  .hero__title-line {
+    font-size: 2.5em;
+  }
+  .hero__title {
+     /* Reduce title font size */
+    animation: fadeInUp 1s ease forwards; /* Change animation for better effect */
+  }
+
+  .hero__title::after {
+    width: 150px; /* Shorten the underline */
+  }
+
+  .hero__text {
+    max-width: 100%;
+    padding: 1.5em;
+    font-size: 1em; /* Adjust text size for readability */
+    animation: slideInUp 1s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  /* New Keyframes for Tablet Animations */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .hero {
+    height: 90vh; /* Further adjust height for mobile */
+  }
+
+  .hero__background {
+    background-attachment: scroll; /* Improve performance on mobile */
+  }
+
+  .hero__container {
+    padding: 1em;
+  }
+
+  .hero__title-line {
+    font-size: 1.5em; /* Further reduce title font size */
+    padding: 0em 0;
+  }
+
+  .hero__title::after {
+    width: 120px; /* Shorten the underline further */
+  }
+
+  .hero__text {
+    padding: 1em;
+    font-size: 0.9em; /* Adjust text size */
+  }
+
+  /* Adjust Text Alignment */
+  .hero__title-line,
+  .hero__text {
+    text-align: center;
+  }
+
+  /* Hide or Adjust Elements if Necessary */
+  /* Example: If the background image is too heavy, consider adding a fallback */
+  /* @media (max-width: 480px) {
+    .hero__background {
+      background-image: url("./assets/mobile-background.jpg");
+    }
+  } */
+}
+
+
 /* Cards Section Styles */
+/* Existing Styles */
 .cards {
   background-color: rgb(22, 39, 85);
   padding: 4em 2em;
@@ -214,7 +502,7 @@ h6 {
 
 .card {
   background-color: white;
-  padding: 2em;
+  padding: 2em 0em;
   width: 310px;
   height: 500px;
   display: flex;
@@ -258,10 +546,85 @@ h6 {
   color: rgb(0, 130, 63);
 }
 
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3em 1.5em;
+    gap: 10em;
+    margin-top: -80px;
+  }
+
+  .card {
+    width: 45%; /* Two cards per row */
+    margin-top: -120px;
+    height: auto; /* Allow height to adjust based on content */
+    padding: 1.5em 0em;
+  }
+
+  .card__title {
+    font-size: 1.3em; /* Slightly smaller font size */
+    padding: 0 1.5em;
+    margin-bottom: 0.8em;
+  }
+
+  .card__text {
+    margin-bottom: 1em;
+    padding: 0 1.5em;
+    font-size: 0.95em; /* Adjust text size for readability */
+  }
+
+  .card__link {
+    font-size: 0.8em;
+    padding: 0 1.5em;
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 1em;
+    gap: 8em;
+    margin-top: -60px;
+  }
+
+  .card {
+    width: 100%; /* Full width for single column */
+    margin-top: -100px;
+    padding: 1em 0em;
+    height: auto; /* Allow height to adjust based on content */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow */
+  }
+
+  .card__title {
+    font-size: 1.2em;
+    padding: 0 1em;
+    margin-bottom: 0.6em;
+  }
+
+  .card__text {
+    margin-bottom: 0.8em;
+    padding: 0 1em;
+    font-size: 0.9em;
+  }
+
+  .card__link {
+    font-size: 0.75em;
+    padding: 0 1em;
+  }
+}
+
+
 /* Roots Section Styles */
+/* Existing Styles */
 .roots {
   position: relative;
-  height: 60vh;
+  height: 75vh;
   overflow: hidden;
   margin: 10vh 0;
   padding: 10vh 0;
@@ -302,7 +665,7 @@ h6 {
 
 .roots__title {
   margin-bottom: 0.5em;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 2.3em;
@@ -318,7 +681,81 @@ h6 {
   gap: 1.5em;
 }
 
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .roots {
+    height: 70vh; /* Adjust height for tablets */
+    margin: 8vh 0;
+    padding: 8vh 0;
+  }
+
+  .roots__background {
+    background-attachment: scroll; /* Improve performance on tablets */
+    background-position: center center; /* Adjust background position */
+  }
+
+  .roots__container {
+    padding: 2em 1em; /* Add padding for better spacing */
+  }
+
+  .roots__content {
+    max-width: 90%;
+    padding: 0 10px;
+  }
+
+  .roots__title {
+    font-size: 2em; /* Reduce title font size */
+    letter-spacing: 0.2em; /* Reduce letter spacing */
+    margin-bottom: 0.4em;
+  }
+
+  .roots__text {
+    gap: 1em; /* Reduce gap between text elements */
+    font-size: 0.95em; /* Adjust text size for readability */
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .roots {
+    height: 90vh; /* Further adjust height for mobile */
+    margin: 6vh 0;
+    padding: 6vh 0;
+  }
+
+  .roots__background {
+    background-image: url("./assets/1 (1).jpg"); /* Consider using a different image for mobile if needed */
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .roots__container {
+    flex-direction: column;
+    padding: 1.5em 0.5em; /* Reduce padding for smaller screens */
+  }
+
+  .roots__content {
+    max-width: 95%;
+    padding: 0 5px;
+  }
+
+  .roots__title {
+    font-size: 1.8em; /* Further reduce title font size */
+    letter-spacing: 0.15em; /* Further reduce letter spacing */
+    margin-bottom: 0.3em;
+  }
+
+  .roots__text {
+    gap: 0.8em; /* Further reduce gap between text elements */
+    font-size: 0.9em; /* Adjust text size for better readability */
+  }
+}
+
+
 /* Vision Section Styles */
+/* Existing Styles */
 .vision {
   position: relative;
   height: 70vh;
@@ -364,14 +801,82 @@ h6 {
 .vision__title {
   line-height: 1;
   margin-bottom: 0.5em;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 4em;
   letter-spacing: 0.3em;
 }
 
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .vision {
+    height: 65vh; /* Slightly reduce height for tablets */
+    margin: 8vh 0;
+    padding: 8vh 0;
+  }
+
+  .vision__background {
+    background-attachment: scroll; /* Improve performance on tablets */
+    background-position: center center; /* Center the background image */
+  }
+
+  .vision__container {
+    left: 50%; /* Adjust left position for better fit */
+    right: 0;
+    padding: 2em 1.5em; /* Add padding for content spacing */
+    background-color: rgba(22, 39, 85, 0.6); /* Slightly adjust background opacity */
+  }
+
+  .vision__content {
+    padding: 2em; /* Reduce padding for smaller screens */
+    text-align: center; /* Center-align text for better readability */
+  }
+
+  .vision__title {
+    font-size: 3em; /* Reduce font size for tablets */
+    letter-spacing: 0.2em; /* Decrease letter spacing */
+    margin-bottom: 0.4em;
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .vision {
+    height: 90vh; /* Further reduce height for mobile */
+    margin: 6vh 0;
+    padding: 6vh 0;
+  }
+
+  .vision__background {
+    background-position: center center; /* Ensure proper background positioning */
+    background-size: cover; /* Maintain background cover */
+  }
+
+  .vision__container {
+    left: 0; /* Remove left offset to occupy full width */
+    width: 100%; /* Ensure container spans full width */
+    padding: 1.5em 1em; /* Further reduce padding */
+    background-color: rgba(22, 39, 85, 0.7); /* Adjust background opacity for better contrast */
+  }
+
+  .vision__content {
+    padding: 1.5em; /* Reduce padding for mobile screens */
+    text-align: center; /* Center-align text for better readability */
+  }
+
+  .vision__title {
+    font-size: 2.5em; /* Further reduce font size for mobile */
+    letter-spacing: 0.15em; /* Further decrease letter spacing */
+    margin-bottom: 0.3em;
+  }
+}
+
+
 /* Focus Section Styles */
+/* Existing Styles */
 .focus {
   position: relative;
   height: 70vh;
@@ -430,6 +935,84 @@ h6 {
   line-height: 1.5;
 }
 
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .focus {
+    height: 65vh; /* Slightly reduce height for tablets */
+    margin: 8vh 0;
+    padding: 8vh 0;
+  }
+
+  .focus__background {
+    background-attachment: scroll; /* Improve performance on tablets */
+    background-position: center center; /* Center the background image */
+  }
+
+  .focus__container {
+    left: 50%; /* Adjust left position for better fit */
+    right: 0;
+    padding: 2em 1.5em; /* Add padding for content spacing */
+    background-color: rgba(22, 39, 85, 0.6); /* Slightly adjust background opacity */
+  }
+
+  .focus__content {
+    padding: 2em; /* Reduce padding for smaller screens */
+    text-align: center; /* Center-align text for better readability */
+  }
+
+  .focus__title {
+    font-size: 3em; /* Reduce font size for tablets */
+    letter-spacing: 0.2em; /* Decrease letter spacing */
+    margin-bottom: 0.4em;
+  }
+
+  .focus__text {
+    font-size: 0.95em; /* Adjust text size for readability */
+    line-height: 1.4; /* Slightly reduce line height */
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .focus {
+    height: 60vh; /* Further reduce height for mobile */
+    margin: 6vh 0;
+    padding: 6vh 0;
+  }
+
+  .focus__background {
+    background-position: center center; /* Ensure proper background positioning */
+    background-size: cover; /* Maintain background cover */
+    background-image: url("./assets/focus.webp"); /* Consider using a different image for mobile */
+  }
+
+  .focus__container {
+    left: 0; /* Remove left offset to occupy full width */
+    right: 0; /* Ensure full width */
+    width: 100%; /* Ensure container spans full width */
+    padding: 1.5em 1em; /* Further reduce padding */
+    background-color: rgba(22, 39, 85, 0.7); /* Adjust background opacity for better contrast */
+  }
+
+  .focus__content {
+    padding: 1.5em; /* Reduce padding for mobile screens */
+    text-align: center; /* Center-align text for better readability */
+  }
+
+  .focus__title {
+    font-size: 2.5em; /* Further reduce font size for mobile */
+    letter-spacing: 0.15em; /* Further decrease letter spacing */
+    margin-bottom: 0.3em;
+  }
+
+  .focus__text {
+    font-size: 0.9em; /* Adjust text size for better readability */
+    line-height: 1.3; /* Reduce line height */
+  }
+}
+
 /* Do Well Section Styles */
 .do-well {
   background-color: #162755;
@@ -445,6 +1028,14 @@ h6 {
   font-size: 3em;
   letter-spacing: 0.2em;
   margin-bottom: 0.5em;
+}
+.do-well__title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #00A000;
+  margin: 0.5em auto 0;
 }
 
 .do-well__text {
@@ -481,6 +1072,7 @@ h6 {
 }
 
 /* Ignite Ambition Section Styles */
+/* Existing Styles */
 .ignite-ambition {
   position: relative;
   display: flex;
@@ -536,7 +1128,7 @@ h6 {
   color: #4E2231;
   text-transform: uppercase;
   margin: 0 0 0.5em 0;
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
 .ignite-ambition__text {
@@ -544,7 +1136,7 @@ h6 {
   line-height: 1.6;
   color: #fff;
   margin: 0 0 2em 0;
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
 .ignite-ambition__button {
@@ -556,7 +1148,7 @@ h6 {
   cursor: pointer;
   text-transform: uppercase;
   margin-right: 1em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .ignite-ambition__button:hover {
@@ -575,7 +1167,128 @@ h6 {
   color: #7A3048;
 }
 
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .ignite-ambition {
+    flex-direction: column; /* Stack content vertically */
+    height: auto; /* Adjust height based on content */
+    padding: 4em 2em; /* Adjust padding for better spacing */
+    margin: 8vh 0; /* Adjust margin for visual balance */
+  }
+
+  .ignite-ambition__background {
+    background-attachment: scroll; /* Improve performance on tablets */
+    background-position: center center; /* Center the background image */
+    opacity: 0.9; /* Slightly increase opacity for better visibility */
+  }
+
+  .ignite-ambition__content {
+    flex-direction: column; /* Stack image and info vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content */
+  }
+
+  .ignite-ambition__image {
+    position: relative;
+    right: 0; /* Reset right positioning */
+    width: 80%; /* Adjust width for better fit */
+    height: auto; /* Allow height to adjust based on content */
+    margin-bottom: 2em; /* Add spacing below the image */
+  }
+
+  .ignite-ambition__info {
+    padding: 0 2em; /* Reduce horizontal padding */
+    align-items: center; /* Center align text */
+    text-align: center; /* Center align text */
+  }
+
+  .ignite-ambition__title {
+    font-size: 2em; /* Reduce font size for tablets */
+    letter-spacing: 0.2em; /* Decrease letter spacing */
+    margin-bottom: 0.4em; /* Adjust margin below title */
+  }
+
+  .ignite-ambition__text {
+    font-size: 1em; /* Adjust text size for readability */
+    line-height: 1.5; /* Slightly reduce line height */
+    margin-bottom: 1.5em; /* Adjust margin below text */
+  }
+
+  .ignite-ambition__button {
+    padding: 0.6em 1.5em; /* Reduce padding for smaller screens */
+    font-size: 0.9em; /* Adjust font size */
+    margin-right: 0.5em; /* Reduce right margin */
+  }
+
+  .ignite-ambition__link {
+    padding-top: 15px; /* Adjust padding for better spacing */
+    font-size: 0.95em; /* Slightly reduce font size */
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .ignite-ambition {
+    flex-direction: column; /* Ensure vertical stacking */
+    height: auto; /* Adjust height based on content */
+    padding: 3em 1em; /* Further reduce padding */
+    margin: 6vh 0; /* Further reduce margin */
+  }
+
+  .ignite-ambition__background {
+    background-position: center center; /* Ensure proper background positioning */
+    background-size: cover; /* Maintain background cover */
+    background-image: url("/assets/ignite_ambition_mobile.webp"); /* Consider using a different image for mobile */
+    opacity: 0.95; /* Slightly increase opacity for better visibility */
+  }
+
+  .ignite-ambition__content {
+    flex-direction: column; /* Stack image and info vertically */
+    align-items: center; /* Center align items */
+    justify-content: center; /* Center content */
+  }
+
+  .ignite-ambition__image {
+    width: 100%; /* Full width for mobile */
+    height: auto; /* Adjust height based on content */
+    margin-bottom: 1.5em; /* Reduce spacing below the image */
+  }
+
+  .ignite-ambition__info {
+    padding: 0 1em; /* Further reduce horizontal padding */
+    align-items: center; /* Center align text */
+    text-align: center; /* Center align text */
+  }
+
+  .ignite-ambition__title {
+    font-size: 1.8em; /* Further reduce font size for mobile */
+    letter-spacing: 0.15em; /* Further decrease letter spacing */
+    margin-bottom: 0.3em; /* Adjust margin below title */
+  }
+
+  .ignite-ambition__text {
+    font-size: 1em; /* Maintain readability */
+    line-height: 1.4; /* Reduce line height for better spacing */
+    margin-bottom: 1em; /* Adjust margin below text */
+  }
+
+  .ignite-ambition__button {
+    padding: 0.5em 1em; /* Further reduce padding */
+    font-size: 0.85em; /* Further adjust font size */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 0.5em; /* Add bottom margin for spacing */
+  }
+
+  .ignite-ambition__link {
+    padding-top: 10px; /* Further adjust padding for better spacing */
+    font-size: 0.9em; /* Slightly reduce font size */
+  }
+}
+
 /* Initiatives Section Styles */
+/* Existing Styles */
 .initiatives {
   padding: 4em 2em;
   text-align: center;
@@ -640,7 +1353,7 @@ h6 {
   font-size: 2.5em;
   color: #162755; /* Dark blue color */
   text-transform: uppercase;
-  margin-bottom: 0.5em;
+  margin: 0 0 0.5em 0;
   break-inside: avoid; /* Prevent title from breaking between columns */
 }
 
@@ -667,6 +1380,196 @@ h6 {
 .our-initiative__link:hover {
   background-color: #007a4c; /* Darker green on hover */
 }
+
+/* Position the SVG in the background of the text box */
+.our-initiative__svg-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1; /* Ensure it's behind other elements */
+  opacity: 0.1; /* Adjust transparency */
+}
+
+.our-initiative__svg {
+  width: 55%; /* Extend beyond the text box for overlap */
+  height: 10%;
+  fill: #ace5c7; /* Match the background tone */
+  mix-blend-mode: multiply; /* Ensure blending with background */
+}
+
+/* Ensure text and content are above the SVG */
+.our-initiative__content {
+  position: relative;
+  z-index: 1; /* Stack above the SVG */
+}
+
+/* Existing Media Query */
+@media (max-width: 768px) {
+  .our-initiative__svg-container {
+    opacity: 0.2; /* Increase visibility for better contrast on small screens */
+    width: 100%; /* Adjust width */
+  }
+  
+  .our-initiative__svg {
+    width: 120%; /* Reduce size for smaller screens */
+  }
+}
+
+/* Responsive Styles */
+
+/* Tablet Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Initiatives Section */
+  .initiatives {
+    padding: 3em 1.5em; /* Adjust padding for better spacing */
+  }
+
+  .initiatives__header {
+    font-size: 2em; /* Reduce font size for tablets */
+    margin-bottom: 0.8em; /* Adjust margin */
+  }
+
+  .initiatives__header::after {
+    width: 40px; /* Shorten the underline */
+    height: 2px; /* Reduce height */
+    margin: 0.4em auto 0; /* Adjust margin */
+  }
+
+  /* Our Initiative Section */
+  .our-initiative {
+    flex-direction: row; /* Stack image and content vertically */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 2em 0; /* Add vertical padding */
+  }
+
+  .our-initiative__image {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    padding: 0; /* Remove padding */
+    margin-bottom: 2em; /* Add spacing below the image */
+  }
+
+  .our-initiative__image img {
+    height: auto; /* Allow image height to adjust */
+  }
+
+  .our-initiative__content {
+    flex: none;
+    max-width: 100%;
+    padding: 1.5em; /* Reduce padding */
+    column-count: 1; /* Single column for easier readability */
+    column-gap: 1em; /* Reduce column gap */
+    text-align: center; /* Center-align text */
+  }
+
+  .our-initiative__title {
+    font-size: 2em; /* Reduce font size for tablets */
+    letter-spacing: 0.2em; /* Decrease letter spacing */
+    margin-bottom: 0.4em; /* Adjust margin */
+  }
+
+  .our-initiative__subtext {
+    font-size: 1em; /* Adjust text size for readability */
+    line-height: 1.5; /* Slightly reduce line height */
+    margin-bottom: 1em; /* Adjust margin */
+  }
+
+  .our-initiative__link {
+    padding: 0.6em 1.5em; /* Reduce padding for smaller screens */
+    font-size: 0.9em; /* Adjust font size */
+    margin-right: 0.5em; /* Reduce right margin */
+  }
+
+  .our-initiative__svg-container {
+    opacity: 0.3; /* Further increase visibility */
+    width: 100%; /* Ensure full width */
+  }
+
+  .our-initiative__svg {
+    width: 100%; /* Adjust SVG size */
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Initiatives Section */
+  .initiatives {
+    padding: 2em 1em; /* Further reduce padding */
+  }
+
+  .initiatives__header {
+    font-size: 1.8em; /* Further reduce font size for mobile */
+    margin-bottom: 0.6em; /* Adjust margin */
+  }
+
+  .initiatives__header::after {
+    width: 300px; /* Further shorten the underline */
+    height: 2px; /* Maintain reduced height */
+    margin: 0.3em auto 0; /* Adjust margin */
+  }
+
+  /* Our Initiative Section */
+  .our-initiative {
+    flex-direction: column; /* Ensure vertical stacking */
+    height: auto; /* Allow height to adjust based on content */
+    padding: 1.5em 0; /* Further reduce padding */
+  }
+
+  .our-initiative__image {
+    flex: none;
+    max-width: 100% !important;
+    width: 100%;
+    height: 30%;
+    padding: 0; /* Remove padding */
+    margin-bottom: 1.5em; /* Reduce spacing below the image */
+  }
+
+  .our-initiative__image img {
+    height: auto; /* Allow image height to adjust */
+  }
+
+  .our-initiative__content {
+    flex: none;
+    max-width: 100% !important;
+    padding: 1em; /* Further reduce padding */
+    column-count: 1; /* Single column for easier readability */
+    column-gap: 1em; /* Maintain reduced column gap */
+    text-align: center; /* Center-align text */
+  }
+
+  .our-initiative__title {
+    font-size: 1.8em; /* Further reduce font size for mobile */
+    letter-spacing: 0.15em; /* Further decrease letter spacing */
+    margin-bottom: 0.3em; /* Adjust margin */
+  }
+
+  .our-initiative__subtext {
+    font-size: 1em; /* Maintain readability */
+    line-height: 1.4; /* Reduce line height for better spacing */
+    margin-bottom: 0.8em; /* Adjust margin */
+  }
+
+  .our-initiative__link {
+    padding: 0.5em 1em; /* Further reduce padding */
+    font-size: 0.85em; /* Further adjust font size */
+    margin-right: 0; /* Remove right margin */
+    margin-bottom: 0.5em; /* Add bottom margin for spacing */
+  }
+
+  .our-initiative__svg-container {
+    opacity: 0.4; /* Further increase visibility */
+    width: 40%; /* Ensure full width */
+  }
+
+  .our-initiative__svg {
+    width: 80%; /* Adjust SVG size for mobile */
+  }
+}
+
 
 /* Our Initiative Section Styles */
 .our-initiative {
@@ -715,7 +1618,7 @@ h6 {
   font-size: 1.1em;
   color: #333333;
   line-height: 1.6;
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
 }
 
 /* Updated "Learn More" Link Styles */
@@ -740,6 +1643,7 @@ h6 {
   padding: 0; /* Remove padding to utilize full height */
   background-color: #4e1961; /* Updated background color */
   margin: 10vh 0; /* Consistent spacing with other sections */
+  position: relative;
 }
 
 .fuzia__image {
@@ -755,22 +1659,35 @@ h6 {
   border-radius: 0; /* Remove rounded corners to match fixed height layout */
   box-shadow: none; /* Remove shadow if not needed */
 }
+.fuzia__svg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure SVG is behind the content */
+  opacity: 0.05; /* Adjust transparency */
+}
+
+.fuzia__svg {
+  width: 200%; /* Adjust to fill the background */
+  height: auto; /* Maintain aspect ratio */
+  fill: #ffffff; /* Set the SVG color */
+  transform: translate(0%, 10%); /* Adjust position as needed */
+}
 
 /* Updated Fuzia Content Styles */
 .fuzia__content {
   flex: 1 1 50%;
-  max-width: 50%;
-  padding: 2em; /* Add padding for spacing */
-  text-align: center; /* Center text horizontally */
-  /* Removed column-count for simpler layout */
-  /* column-count: 2; */
-  /* column-gap: 2em; */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
-  background-color: rgba(78, 25, 97, 0.8); /* Slightly transparent for better readability */
+  position: relative; /* Stack above SVG */
+  z-index: 1;
+  text-align: center;
+  padding: 2em;
+  background-color: rgba(78, 25, 97, 0.8); /* Slight transparency */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 /* Enlarged and Lightened Title Image */
@@ -859,6 +1776,7 @@ h6 {
   padding: 0; /* Remove padding to utilize full height */
   background-color: #f0f0f0; /* Light background for contrast */
   margin: 10vh 0; /* Consistent spacing with other sections */
+  position: relative;
 }
 
 .vineyard__image {
@@ -875,17 +1793,33 @@ h6 {
   box-shadow: none; /* Remove shadow if not needed */
 }
 
+.vineyard__svg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure SVG is behind the content */
+  opacity: 0.15; /* Adjust transparency */
+}
+
+.vineyard__svg {
+  width: 100%;
+  height: auto;
+  fill: #ffffff; /* Light fill for contrast against the dark background */
+}
+
 .vineyard__content {
   flex: 1 1 50%;
-  max-width: 50%;
-  padding: 2em; /* Add padding for spacing */
-  text-align: center; /* Align text to the left */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
-  background-color: #333333; /* Match background color */
+  padding: 4em;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Ensure content stacks above SVG */
+  z-index: 1; /* Ensure it is above SVG */
+  background-color: #333333; /* Match background color */
 }
 
 .vineyard__title-image {
@@ -1014,7 +1948,7 @@ h6 {
 .service__link {
   display: inline-block; /* Allows padding and better click area */
   padding: 0.8em 2em;
-  background-color: #4426ef; /* Matching green color */
+  background-color: #4a90e2; /* Matching green color */
   color: #ffffff; /* White text */
   text-decoration: none; /* Remove underline */
   text-transform: uppercase;

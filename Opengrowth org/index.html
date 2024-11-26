@@ -16,11 +16,14 @@
 <body>
   <header class="header" id="navbar">
     <nav class="main-nav">
+      <!-- Logo -->
       <a href="#" class="main-nav__link">
         <img class="main-nav__logo"
           src="https://static.wixstatic.com/media/929e8c_f7c2265ae1504106bcf0b40c429b66be~mv2_d_34342_6606_s_6.png/v1/fill/w_261,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Asset%2011.png"
           alt="OpenGrowth Logo" />
       </a>
+      
+      <!-- Navigation Links -->
       <ul class="main-nav__list">
         <li class="main-nav__item">
           <a href="#" class="main-nav__link active">Home</a>
@@ -35,7 +38,17 @@
           <a href="contact.html" class="main-nav__link">Contact</a>
         </li>
       </ul>
+      
+      <!-- Hamburger Menu -->
+      <div class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </nav>
+    
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
   </header>
 
   <main class="main-content">
@@ -196,23 +209,71 @@
       </section>
 
       <!-- Our Initiative Section -->
-      <section class="our-initiative">
-        <div class="our-initiative__image">
-          <img src="assets/our_initiative.webp" alt="Our Initiative Image" />
-        </div>
-        <div class="our-initiative__content">
-          <img src="assets/h2text_initiative.webp" alt="Initiative Title" class="our-initiative__title-image" />
-          <p class="our-initiative__subtext">
-            We are Educating the next generation of global health leaders and change agents, as well as advocating for
-            mindful global health programming.
-          </p>
-          <a href="#" class="our-initiative__link">Learn More ></a>
-        </div>
-      </section>
+      <!-- Our Initiative Section -->
+<section class="our-initiative">
+  <div class="our-initiative__image">
+    <img src="assets/our_initiative.webp" alt="Our Initiative Image" />
+  </div>
+  <div class="our-initiative__content">
+    <!-- SVG Positioned in the Background -->
+    <div class="our-initiative__svg-container">
+      <svg
+        class="our-initiative__svg"
+        preserveAspectRatio="xMidYMid meet"
+        data-bbox="47.026 13.5 106.03 173.1"
+        viewBox="47.026 13.5 106.03 173.1"
+        xmlns="http://www.w3.org/2000/svg"
+        role="presentation"
+        aria-hidden="true"
+      >
+        <defs>
+          <style>
+            #comp-k60azisr svg [data-color="1"] {
+              fill: #ACE5C7;
+            }
+          </style>
+        </defs>
+        <g>
+          <path
+            d="M150.9 54.3c0-5-4-9.1-9.1-9.1s-9.1 4-9.1 9.1 4 9.1 9.1 9.1c1.1 0 2.1-.3 3.2-.5.8 2.3.6 5.4-1 9.1-14 29.5-50.6 30.7-68.3 29.4-1.1-4.5-5-7.9-9.7-8.3C53.5 45.5 66 31.9 80.2 25c4-1.9 7.2-2.3 9.6-2 .3 4.8 4.2 8.7 9.1 8.7 5 0 9.1-4 9.1-9.1s-4-9.1-9.1-9.1c-2.4 0-4.5.9-6.2 2.4-3.9-.8-9.4-.8-15.9 2.4-23.5 11.4-29.1 35.4-18 77-2.6 2-4.4 5.2-4.4 8.8 0 1.5.3 2.9.9 4.2l-.3-.3c-.6.9-13.9 22.6-4.8 42.5 6.1 13.4 20.4 22.2 42.8 26.5.9 5.4 5.6 9.6 11.2 9.6 6.2 0 11.4-5 11.4-11.4 0-6.2-5-11.4-11.4-11.4-4.2 0-7.8 2.3-9.7 5.6-19.8-3.9-32.3-11.4-37.3-22.2-6.1-13.4.8-28.7 3.4-33.7 1.5.8 3.2 1.1 4.9 1.1 4.2 0 7.8-2.4 9.6-5.8 3 .3 6.7.5 10.6.5 20.9 0 51.7-5.3 65.2-34.3 3.3-7.1 2.5-13.6-.3-17.9.1-.9.3-1.9.3-2.8zm-47 115.8c2.8 0 5 2.3 5 5 0 2.8-2.3 5-5 5-2.8 0-5-2.3-5-5 0-2.8 2.2-5 5-5z"
+            fill="#00a99d"
+            data-color="1"
+          ></path>
+        </g>
+      </svg>
+    </div>
+    <!-- Existing Content -->
+    <img src="assets/h2text_initiative.webp" alt="Initiative Title" class="our-initiative__title-image" />
+    <p class="our-initiative__subtext">
+      We are Educating the next generation of global health leaders and change agents, as well as advocating for
+      mindful global health programming.
+    </p>
+    <a href="#" class="our-initiative__link">Learn More ></a>
+  </div>
+</section>
+
 
       <!-- Fuzia Section -->
       <section class="fuzia">
         <div class="fuzia__content">
+          <!-- SVG Background -->
+          <div class="fuzia__svg-container">
+            <svg
+              preserveAspectRatio="xMidYMid meet"
+              data-bbox="-0.004 24.97 199.704 150.03"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="-0.004 24.97 199.704 150.03"
+              role="presentation"
+              aria-hidden="true"
+              class="fuzia__svg"
+            >
+              <g>
+                <path
+                  d="M199.7 95.5c0-11.9-9-21.6-20-22.7V39c0-4.5-2.2-8.6-6.3-11.2-4.7-3-10.8-3.8-16-1.5L47.3 58.6H22C10.4 58.6.8 67.1.6 77.3L0 111.4c-.1 4.6 1.8 9.1 5.2 12.6 4.1 4.1 10 6.6 16.2 6.6h25.9l8.5 2.5-4.8 15.2c-2.6 8.2 1.9 17 10.1 19.6l20 6.4c1.6.5 3.2.7 4.7.7 6.6 0 12.8-4.2 14.9-10.9l5-15.7 51.6 15.9c2.2 1 4.6 1.5 7 1.5 3.2 0 6.3-.9 9-2.6 4.1-2.6 6.3-6.7 6.3-11.3v-33.8c11.1-.9 20.1-10.7 20.1-22.6zM21.4 121.6c-4 0-7.7-1.2-10.2-3.8-1.3-1.3-2.8-3.3-2.7-6.3l.6-33.9c.1-5.6 5.9-10 12.9-10h26.6l97.2-28.8V152l-97.2-30.4H21.4zM98 163.3c-2.1 6.7-9.4 10.4-16.1 8.3l-20-6.4c-6.7-2.1-10.4-9.4-8.3-16.1l4.8-15.1 44.5 13.7-4.9 15.6zm73.7-11.3c0 2.2-1.7 3.5-2.7 4.1-2.4 1.5-5.8 1.7-8.4.5l-11.9-3.6V38l11.4-3.4.6-.2c2.6-1.2 6-1 8.4.5.9.6 2.6 1.9 2.6 4.1v113zm8-36.6V75.7c10 1 17.2 9.5 17.2 19.9s-7.2 18.7-17.2 19.8z"
+                ></path>
+              </g>
+            </svg>
+          </div>
           <img src="assets/h2text_fuzia.png" alt="Fuzia Title" class="fuzia__title-image" />
           <p class="fuzia__subtext">
             Empowering creative women through the fusion of cultures and ideas.
@@ -223,20 +284,64 @@
           <img src="assets/fuzia.webp" alt="Fuzia Image" />
         </div>
       </section>
+      
 
       <!-- Vineyard Section -->
       <section class="vineyard">
-        <div class="vineyard__image">
-          <img src="assets/vineyard.webp" alt="Vineyard Image" />
-        </div>
         <div class="vineyard__content">
+          <!-- SVG Background -->
+          <div class="vineyard__svg-container">
+            <svg
+              preserveAspectRatio="xMidYMid meet"
+              data-bbox="27.002 33.001 145.998 133.999"
+              viewBox="27.002 33.001 145.998 133.999"
+              xmlns="http://www.w3.org/2000/svg"
+              data-type="color"
+              role="presentation"
+              aria-hidden="true"
+              class="vineyard__svg"
+            >
+              <defs>
+                <style>
+                  #comp-jr9kqkur svg [data-color="1"] {
+                    fill: #FFFFFF;
+                  }
+                  #comp-jr9kqkur svg [data-color="2"] {
+                    fill: #333333;
+                  }
+                  #comp-jr9kqkur svg [data-color="3"] {
+                    fill: #333333;
+                  }
+                  #comp-jr9kqkur svg [data-color="4"] {
+                    fill: #333333;
+                  }
+                </style>
+              </defs>
+              <g>
+                <path
+                  d="M172.407 50.786c-2.969-3.154-6.977-5.034..."
+                  fill="#000010"
+                  data-color="1"
+                ></path>
+                <path
+                  d="M114.196 59.595c.92.78 1.72 1.681 2.375 2.677..."
+                  fill="#AC6BB2"
+                  data-color="2"
+                ></path>
+              </g>
+            </svg>
+          </div>
           <img src="assets/h2text_vineyard.webp" alt="Vineyard Title" class="vineyard__title-image" />
           <p class="vineyard__subtext">
             We promote and host philanthropic and charitable events at our fine destination.
           </p>
           <a href="#" class="vineyard__link">Learn More ></a>
         </div>
+        <div class="vineyard__image">
+          <img src="assets/vineyard.webp" alt="Vineyard Image" />
+        </div>
       </section>
+      
 
       <!-- service section -->
       <section class="service">
