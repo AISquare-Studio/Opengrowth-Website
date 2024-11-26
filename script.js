@@ -7,30 +7,52 @@ document.addEventListener("DOMContentLoaded", function () {
   
   // Smooth scroll for internal navigation (same page sections)
   navLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      // If the link is for scrolling to a section within the same page
-      if (this.hash !== "") {
+    const href = link.getAttribute("href");
+    if (href.startsWith("#")) {
+      // Internal link within the same page
+      link.addEventListener("click", function (e) {
         e.preventDefault(); // Prevent default anchor behavior
 
-        // Use scrollIntoView for smooth scrolling
-        const targetElement = document.querySelector(this.hash);
+        const targetElement = document.querySelector(this.getAttribute("href"));
         if (targetElement) {
           targetElement.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
         }
-      } else {
-        // If it's a normal link (e.g., external pages like team.html)
-        // Allow the default behavior (navigate to the page)
-        window.location.href = this.href;
-      }
 
-      // Add the active class to the clicked link
-      navLinks.forEach((l) => l.classList.remove("active"));
-      this.classList.add("active");
-    });
+        // Update active class
+        navLinks.forEach((l) => l.classList.remove("active"));
+        this.classList.add("active");
+
+        // Close the mobile menu after clicking a link
+        if (window.innerWidth <= 480) {
+          mainNav.classList.remove("active");
+          hamburger.classList.remove("active");
+          document.body.style.overflow = ""; // Re-enable body scroll
+          overlay.style.display = "none";
+        }
+      });
+    }
+    // External links, including those with hashes to other pages, are left untouched
   });
+
+  // Smooth scroll to section if URL contains a hash on page load (only for index.html)
+  const isIndexPage = window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
+  if (isIndexPage && window.location.hash) {
+    const targetElement = document.querySelector(window.location.hash);
+    if (targetElement) {
+      // Delay to ensure all elements are loaded
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }, 100);
+      });
+    }
+  }
 
   function createParallaxEffect(elementSelector, isTransform = false) {
     const element = document.querySelector(elementSelector);
@@ -65,13 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const scrollProgress = window.scrollY - startOffset;
 
         if (isTransform) {
-          element.style.transform = `translateY(-${
-            scrollProgress * parallaxSpeed
-          }px)`;
+          element.style.transform = `translateY(-${scrollProgress * parallaxSpeed}px)`;
         } else {
-          element.style.backgroundPositionY = `-${
-            scrollProgress * parallaxSpeed
-          }px`;
+          element.style.backgroundPositionY = `-${scrollProgress * parallaxSpeed}px`;
         }
       }
     }
@@ -109,14 +127,41 @@ document.addEventListener("DOMContentLoaded", function () {
   createParallaxEffect(".vision__background");
   createParallaxEffect(".focus__background");
 
-  igniteAmbitionLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    
-    const igniteAmbitionSection = document.getElementById('ignite-ambition');
-    
-    igniteAmbitionSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+  // Mobile Menu Toggle
+  const hamburger = document.getElementById("hamburger");
+  const mainNav = document.querySelector(".main-nav");
+  const overlay = document.getElementById("overlay");
+
+  hamburger.addEventListener("click", function () {
+    const isActive = hamburger.classList.toggle("active");
+    mainNav.classList.toggle("active");
+
+    // Toggle body scroll
+    if (isActive) {
+      document.body.style.overflow = "hidden";
+      hamburger.setAttribute("aria-expanded", "true");
+      overlay.style.display = "block";
+    } else {
+      document.body.style.overflow = "";
+      hamburger.setAttribute("aria-expanded", "false");
+      overlay.style.display = "none";
+    }
+  });
+
+  // Close the menu when clicking on the overlay
+  overlay.addEventListener("click", function () {
+    mainNav.classList.remove("active");
+    hamburger.classList.remove("active");
+    document.body.style.overflow = "";
+    hamburger.setAttribute("aria-expanded", "false");
+    overlay.style.display = "none";
+  });
+
+  // Allow keyboard navigation for the hamburger menu
+  hamburger.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      hamburger.click();
+    }
   });
 });
